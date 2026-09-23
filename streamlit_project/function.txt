@@ -1,0 +1,85 @@
+1. button: allow the user to  perform an action when clicked.
+
+st.title("my first app")
+
+if  st.button("Click me!"):
+    st.write("button clicked")
+    
+2. text input :  user enter the  string
+
+
+name =st.text_input("What is your name?")
+
+if name:
+    st.write("Hello ", name)
+
+3. number  input :  user enter the number
+age =st.number_input(
+    "Enter the age",
+    min_value=1,
+    max_value=100
+
+    )
+
+st.write("your age is : ",age)
+
+4.slider : user allow to select a value by moving the slider
+salary =st.slider(
+    "my expected salary",
+    min_value=10000,
+    max_value=100000,
+    step=1000
+)
+
+st.write("your salary is : ",salary)
+
+5.select box /dropdown : dropdown menu
+city = st.selectbox(
+    "select city",
+    ["New York", "Los Angeles", "Chicago", "Houston", "Phoenix", "Philadelphia"]
+)
+st.write("you selected city is ", city)
+
+6.radio button : user can select one of the options
+
+gender =st.radio("select gender",["male","female"])
+st.write("you selected gender is ", gender)
+
+7.columns :
+
+import streamlit as st
+
+
+coll1,coll2,coll3 = st.columns(3)
+
+with coll1 :
+    st.metric("students makrs",50)
+
+with coll2 :
+    st.metric("students makrs",80)
+    
+with coll3 :
+    st.metric("students makrs",90)
+
+
+8. sidebar component : 
+
+
+st.sidebar.title("Menu")
+
+name  =st.sidebar.text_input("What is your name?")
+
+course =st.sidebar.selectbox(
+    "select course",
+    ["python","data science","JAVA","MERN","Cyber Security"]
+)
+
+st.write("name is  : ", name)
+st.write("course is : ", course) 
+
+9. registation form :
+
+HW : 
+
+employees information app : 
+
