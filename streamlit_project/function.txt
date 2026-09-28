@@ -83,3 +83,11 @@ HW :
 
 employees information app : 
 
+
+csv  file  : 
+
+pip install  streamlit pandas 
+
+# file upload  : st.file_uploader
+
+print first 5 row  : -----> st.subheader("5 rows") ----> head()
