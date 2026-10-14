@@ -53,3 +53,48 @@ cv2.imshow("original",image)
 cv2.imshow("crop",crop)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
+
+"""
+
+"""
+cap = cv2.VideoCapture(0)
+
+ret,previous_frame  = cap.read()
+
+if not ret:
+    print("camera not found")
+    cap.release()
+    exit()
+
+previous_gray = cv2.cvtColor(previous_frame, cv2.COLOR_BGR2GRAY)
+
+previous_gray = cv2.resize(previous_gray, (21,21),0)
+
+while True:
+    ret ,frame = cap.read()
+    if not ret:
+        break 
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    
+    gray = cv2.resize(gray, (21,21),0)
+    
+    # capture the consecutive frames
+    difference = cv2.absdiff(previous_gray, gray)
+    
+    theshold = cv2.threshold(difference, 25, 255, cv2.THRESH_BINARY)
+    
+    cv2.imshow("original", frame)
+    cv2.imshow("motion detection :", theshold)
+    
+    previous_gray = gray
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+    
+cap.release()
+cv2.destroyAllWindows()
+"""
+# face_cascade = cv2.CascadeClassifier("opencv2/haarcascade_frontalface_default.xml")
+
+# cap = cv2.VideoCapture(0)
+
+"""
