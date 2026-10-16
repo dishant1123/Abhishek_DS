@@ -102,8 +102,45 @@ translator = pipeline('translation',
 text = "hello , how are you ?"
 
 result = translator(text)
-print("english : ",text)
-print("german : ",result[0]['translation_text'])
+# print("english : ",text)
+# print("german : ",result[0]['translation_text'])
+print(result)
 
 """
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.metrics import accuracy_score, classification_report
 
+from sklearn.pipeline import make_pipeline
+
+messages = [
+    "Win a free prizes now",
+    "Claim your free reward",
+    "Congratulations you won a lotteary",
+    "Please call me later",
+    "Let us discuss the  project"
+]
+
+labels =[
+    "Spam",
+    "Spam",
+    "Ham",
+    "Not Spam",
+    "Not Spam"
+]
+# model : 
+model = make_pipeline(CountVectorizer(),
+                      MultinomialNB())  # classify the msg 
+
+# train : 
+model.fit(messages,labels)
+
+# test : 
+text_msg = [
+    'win free money now',
+    'please discuss the  project  today'
+]
+predict = model.predict(text_msg)
+
+for messages,predict in zip(text_msg,predict):
+    print(f"{messages} : {predict}")
