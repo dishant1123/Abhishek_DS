@@ -65,7 +65,10 @@ test_preidct = classifer(test_review ,truncation=True)
 y_predict =[] 
 
 for i in test_preidct:
-    y_predict.append(i['label'])
+    if i['label']=="POSITIVE":
+        y_predict.append(1)
+    else:
+        y_predict.append(0)
 
 # accuracy : 
 accuracy = accuracy_score(y_actual,y_predict) 
